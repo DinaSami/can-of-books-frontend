@@ -4,9 +4,7 @@
 **Version**: 1.0.0 
 
 ## Overview
-This Apllication is for exploring location that displys a map for the selected location by the user, The reason for building this application is to fill users need by exploring location around the world.
-
-
+This Apllication is for dispalying user's information with login and logout buttons.
 ## Getting Started
 The user can use my URL that deployed on Netlify in order to use this application easily.
 
@@ -19,6 +17,7 @@ I used API besides that I install thunder client extension in my VS code and I r
 ## Credit and Collaborations
 
 1- [auth0](https://auth0.com/)
+2- [netlify](https://app.netlify.com/)
 
 ## Time Estimates
 
