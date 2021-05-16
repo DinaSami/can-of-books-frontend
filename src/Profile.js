@@ -4,13 +4,14 @@ import { withAuth0 } from '@auth0/auth0-react';
 
 function Profile() {
     const { user } = useAuth0();
-
-    return (<div>
-        <div>Hello {user.name}</div>
-        <div>Email: {user.email}</div>
-        <div> {user.picture}</div>
-
-    </div>
+console.log(user.picture);
+    return (
+    
+    <>
+            <div>Hello {user.name}</div>
+            <div>Email: {user.email}</div>
+            <img src={user.picture} alt='' />
+    </>
     )
 }
 
