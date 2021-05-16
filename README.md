@@ -1,11 +1,32 @@
-# Start your own "Can of Books" App
+# can-of-books-frontend
 
-This repository has starter code to begin work on creating your own online bookshelf.
+**Author**: Ayah Zaareer & Dina Khaleel
+**Version**: 1.0.0 
 
-## What can books do?
+## Overview
+This Apllication is for exploring location that displys a map for the selected location by the user, The reason for building this application is to fill users need by exploring location around the world.
 
-Books are life-changing. They have the power to enlighten, educate, entertain, heal, and help us grow. Build out this code base to create an web app to track what books have impacted you, and what's recommended to read next.
 
-## Use this template
+## Getting Started
+The user can use my URL that deployed on Netlify in order to use this application easily.
 
-Clone this repo to your own account with the green "Use this template" button. Then, add any collaborators. Now you are ready to start adding features! Deploy your site to let the world know which books have had the greatest impact on you, and what's recommended. Enjoy!
+## Architecture
+I used API besides that I install thunder client extension in my VS code and I run this command (npm i react-Bootstrap Bootstrap axios) in order to use API effectivelly .
+
+## Change Log
+16-05-2021 9:59pm - Application now has a fully-functional express server, with a GET route for the location resource. 
+
+## Credit and Collaborations
+
+1- [auth0](https://auth0.com/)
+
+## Time Estimates
+
+Name of feature: User Authentication with Auth0
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2 P.M.
+Finish time: 4 P.M.
+
+Actual time needed to complete: 2 hours
