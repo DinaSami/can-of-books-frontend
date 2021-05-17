@@ -29,3 +29,15 @@ Start time: 2 P.M.
 Finish time: 4 P.M.
 
 Actual time needed to complete: 2 hours
+
+## Time Estimates
+
+Name of feature: MongoDB
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2 P.M.
+
+Finish time: 4 P.M.
+
+Actual time needed to complete: 2 hours
