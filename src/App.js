@@ -15,7 +15,7 @@ import Profile from './Profile';
 class App extends React.Component {
 
   render() {
-    // console.log('app', this.props);
+    console.log('app', this.props.auth0.user);
     return (
       <>
         <Router>
