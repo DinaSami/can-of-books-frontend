@@ -4,39 +4,32 @@ import './BestBooks.css';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 
+import Card from 'react-bootstrap/Card';
+
 
 class MyFavoriteBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      book: []
+      book12: []
 
     }
   }
 
   componentDidMount = async () => {
     const { user } = this.props.auth0;
-    const myBooks = `${process.env.REACT_APP_SERVER_URL}/books?email=${user.email}`;
-    const showApiUrlbook = await axios.get(myBooks);
+    const myBooks = `${process.env.REACT_APP_SERVER_URL}/book?email=${user.email}`;
+    const req = await axios.get(myBooks);
     console.log('hhhhhhhhhhhhhh');
-    this.setState({book:showApiUrlbook.data});
+    this.setState({
+      book12: req.data
+    });
   }
 
 
 
 
-//   getBookData = async () => {
-// console.log('hhhhhhh');
 
-//     const { user } = this.props.auth0;
-//     const url = `${process.env.REACT_APP_SERVER_URL}/book?email=${user.email}`;
-//     const bookReq = await axios.get(url);
-//     console.log(bookReq);
-//     this.setState({
-//       book: bookReq.data[0].book,
-//     });
-
-//   }
 
   render() {
     const { user } = this.props.auth0;
@@ -44,13 +37,31 @@ class MyFavoriteBooks extends React.Component {
     return (
       <>
         <h1>My Favorite Books</h1>
-        <p>{user.email}</p>
-        <p>{this.state.book}</p>
-        {this.state.book.map(ele => {
+
+        {this.state.book12.map(ele => {
           return <div>
-            {ele.name}
+            {/* <div>Book Title : {ele.name}</div>
+            <div>Book Description : {ele.description}</div>
+            <div>Book Status : {ele.status}</div> */}
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title>Book Title : {ele.name}</Card.Title>
+
+                <Card.Text>
+                  <div>Book Description : {ele.description}</div>
+                  <div>Book Status : {ele.status}</div>
+
+
+                </Card.Text>
+
+
+              </Card.Body>
+            </Card>
+
           </div>;
         })}
+
+
 
 
         {/* 
