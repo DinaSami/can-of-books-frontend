@@ -60,7 +60,6 @@ return indEl !== index ;
   await axios.delete(`${process.env.REACT_APP_SERVER_URL}/book/${index}`, {params : deletedData});
 }
 
-
   render() {
     // const { user } = this.props.auth0;
 
