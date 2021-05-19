@@ -66,10 +66,10 @@ class MyFavoriteBooks extends React.Component {
     e.preventDefault();
 
     const bodyData = {
-      name: this.state.name,
-      description: this.state.description,
-      status: this.state.status,
-      email: this.props.auth0.user.email
+      nameA: this.state.name,
+      descriptionA: this.state.description,
+      statusA: this.state.status,
+      emailA: this.props.auth0.user.email
     }
     const updateBook = await axios.put(`${process.env.REACT_APP_SERVER_URL}/book/${this.state.index}`, bodyData);
 
