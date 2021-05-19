@@ -5,8 +5,8 @@ import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
 import BookFormModal from './BookFormModal';
+import UpdateForm from './UpdateForm';
 
 
 class MyFavoriteBooks extends React.Component {
@@ -16,7 +16,9 @@ class MyFavoriteBooks extends React.Component {
       book12: [],
       name: '',
       description: '',
-      status: ''
+      status: '',
+      index: 0,
+      showUpdateForm: false
     }
   }
 
@@ -48,18 +50,44 @@ class MyFavoriteBooks extends React.Component {
     this.setState({ book12: newBookAdded.data })
   }
 
-deleteBook = async (index) =>{
-  const newArrayOfBook = this.state.book12.filter((element,indEl)=> {
-return indEl !== index ; 
-  })
-  this.setState({book12:newArrayOfBook})
+  deleteBook = async (index) => {
+    const newArrayOfBook = this.state.book12.filter((element, indEl) => {
+      return indEl !== index;
+    })
+    this.setState({ book12: newArrayOfBook })
 
-  const deletedData = {
-    email: this.props.auth0.user.email
+    const deletedData = {
+      email: this.props.auth0.user.email
+    }
+    await axios.delete(`${process.env.REACT_APP_SERVER_URL}/book/${index}`, { params: deletedData });
   }
-  await axios.delete(`${process.env.REACT_APP_SERVER_URL}/book/${index}`, {params : deletedData});
-}
 
+  updateBook = async (e) => {
+    e.preventDefault();
+
+    const bodyData = {
+      name: this.state.name,
+      description: this.state.description,
+      status: this.state.status,
+      email: this.props.auth0.user.email
+    }
+    const updateBook = await axios.put(`${process.env.REACT_APP_SERVER_URL}/book/${this.state.index}`, bodyData);
+
+    this.setState({ book12: updateBook.data })
+  }
+
+  updateEachBook = (index) => {
+    const updateArrayOfBook = this.state.book12.filter((element, indEl) => {
+      return indEl === index;
+    });
+    this.setState({
+      index: index,
+      name: updateArrayOfBook[0].name,
+      description: updateArrayOfBook[0].description,
+      status: updateArrayOfBook[0].status,
+      showUpdateForm: true
+    });
+  }
   render() {
     // const { user } = this.props.auth0;
 
@@ -72,8 +100,8 @@ return indEl !== index ;
           updateBookStatus={this.updateBookStatus}
           addBook={this.addBook}
         />
-        {this.state.book12.map((ele,idx) => {
-          return <div key ={idx}>
+        {this.state.book12.map((ele, idx) => {
+          return <div key={idx}>
             <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <Card.Title>Book Title : {ele.name}</Card.Title>
@@ -81,11 +109,23 @@ return indEl !== index ;
                   <div>Book Description : {ele.description}</div>
                   <div>Book Status : {ele.status}</div>
                 </Card.Text>
-                <Button  onClick={()=> this.deleteBook(idx)}>Remove</Button>
+                <Button onClick={() => this.deleteBook(idx)}>Remove</Button>
+                <Button onClick={() => this.updateEachBook(idx)}>Update</Button>
               </Card.Body>
             </Card>
           </div>;
         })}
+        {this.state.showUpdateForm &&
+          <UpdateForm
+            name={this.state.name}
+            description={this.state.description}
+            status={this.state.status}
+            updateBook={this.updateBook}
+            updateBookName={this.updateBookName}
+            updateBookDiscription={this.updateBookDiscription}
+            updateBookStatus={this.updateBookStatus}
+          />
+        }
       </>
     )
   }
