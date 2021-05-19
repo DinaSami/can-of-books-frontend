@@ -7,7 +7,7 @@ export class BookFormModal extends Component {
     render() {
         return (
             <div>
-                <Form onSubmit={(e) => this.props.addBook(e)}>
+                <Form style={{ width: '40rem' }} className= 'ml-4' onSubmit={(e) => this.props.addBook(e)}>
                     <Form.Group >
                         <Form.Label>Add Book name :</Form.Label>
                         <Form.Control type="text" onChange={this.props.updateBookName} />
@@ -23,7 +23,7 @@ export class BookFormModal extends Component {
                         <Form.Control type="text" onChange={this.props.updateBookStatus} />
                     </Form.Group>
 
-                    <Button type="submit" >Add new Book</Button>
+                    <Button type="submit" className='btn btn-warning '>Add new Book</Button>
 
                 </Form>
             </div>
