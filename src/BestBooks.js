@@ -93,7 +93,7 @@ class MyFavoriteBooks extends React.Component {
 
     return (
       <>
-        <h1>My Favorite Books</h1>
+        <h1 style={{color:'red' , marginLeft: '25px' }} >My Favorite Books</h1>
         <BookFormModal
           updateBookName={this.updateBookName}
           updateBookDiscription={this.updateBookDiscription}
@@ -102,15 +102,15 @@ class MyFavoriteBooks extends React.Component {
         />
         {this.state.book12.map((ele, idx) => {
           return <div key={idx}>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem' }} className=' mx-auto my-5'>
               <Card.Body>
                 <Card.Title>Book Title : {ele.name}</Card.Title>
                 <Card.Text>
                   <div>Book Description : {ele.description}</div>
                   <div>Book Status : {ele.status}</div>
                 </Card.Text>
-                <Button onClick={() => this.deleteBook(idx)}>Remove</Button>
-                <Button onClick={() => this.updateEachBook(idx)}>Update</Button>
+                <Button onClick={() => this.deleteBook(idx)} className='btn btn-danger m-2'>Remove</Button>
+                <Button onClick={() => this.updateEachBook(idx)} className='btn btn-success m-2'>Update</Button>
               </Card.Body>
             </Card>
           </div>;

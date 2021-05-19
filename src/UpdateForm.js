@@ -8,7 +8,7 @@ export class UpdateForm extends Component {
         return (
             <div>
 
-                <Form onSubmit={(e) => this.props.updateBook(e)}>
+                <Form style={{ width: '40rem' }} className= 'ml-4' onSubmit={(e) => this.props.updateBook(e)}>
                     <Form.Group >
                         <Form.Label>Update Book name :</Form.Label>
                         <Form.Control type="text" onChange={this.props.updateBookName} value={this.props.name} />
@@ -24,7 +24,7 @@ export class UpdateForm extends Component {
                         <Form.Control type="text" onChange={this.props.updateBookStatus} value={this.props.status}/>
                     </Form.Group>
 
-                    <Button type="submit" >Update Book</Button>
+                    <Button className='btn btn-warning ' type="submit" >Update Book</Button>
 
                 </Form>
 
